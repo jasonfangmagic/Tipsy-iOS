@@ -203,6 +203,7 @@
                         <outlet property="splitNumberLabel" destination="bSy-Yc-886" id="wSJ-cP-OZ8"/>
                         <outlet property="tenPctButton" destination="7y6-Kf-yF0" id="0sh-Hk-TBG"/>
                         <outlet property="twentyPctButton" destination="UtR-dU-EKt" id="dGh-Rk-Jsf"/>
+                        <outlet property="zeroPctButton" destination="XzR-0E-Xf7" id="K3t-Jn-8JP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
