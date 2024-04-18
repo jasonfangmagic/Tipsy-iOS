@@ -22,6 +22,7 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var splitNumberLabel: UILabel!
     
     var tips: Float = 0.0
+    var mealNumber: Float = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,13 +58,23 @@ class CalculatorViewController: UIViewController, UITextFieldDelegate {
     @IBAction func calculatePressed(_ sender: UIButton) {
         billTextField.endEditing(true)
         let peopleNumber = Float(splitNumberLabel.text ?? "2")!
-        print((Float(billTextField.text!) ?? 0 * (1 + tips))/5 )
+//        print(billTextField.text!)
+        let mealNumber = ((Float(billTextField.text!) ?? 0) * (1 + tips))/peopleNumber
+
         
         self.performSegue(withIdentifier: "calculate", sender: self)
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "calculate" {
+            let destinationVC = segue.destination as! ResultsViewController
+            destinationVC.tipsNumber = String(mealNumber)
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print(splitNumberLabel.text ?? "2")
+      
         return true
     }
     

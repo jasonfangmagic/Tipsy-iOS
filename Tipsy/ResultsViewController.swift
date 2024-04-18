@@ -15,10 +15,12 @@ class ResultsViewController: UIViewController {
     
     @IBOutlet weak var settingslabel: UILabel!
     
+    var tipsNumber: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        totalLabel.text = tipsNumber
     }
     
 
