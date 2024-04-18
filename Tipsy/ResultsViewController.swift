@@ -16,15 +16,20 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var settingslabel: UILabel!
     
     var tipsNumber: String?
+    var peopleNumber: String?
+    var tipsPct: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         totalLabel.text = tipsNumber
+        settingslabel.text = "Split between \(peopleNumber ?? "0") people, with \(tipsPct ?? "0") tip."
+        
     }
     
 
     @IBAction func recalculatePressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 
