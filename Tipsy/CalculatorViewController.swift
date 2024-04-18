@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalculatorViewController: UIViewController {
+class CalculatorViewController: UIViewController, UITextFieldDelegate {
 
     
     @IBOutlet weak var billTextField: UITextField!
@@ -21,9 +21,12 @@ class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var splitNumberLabel: UILabel!
     
+    var tips: Float = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        billTextField.delegate = self
     }
 
     @IBAction func tipChanged(_ sender: UIButton) {
@@ -33,15 +36,16 @@ class CalculatorViewController: UIViewController {
         twentyPctButton.isSelected = false
         sender.isSelected = true
        
+        
         if zeroPctButton.isSelected == true {
-            print("0.0")
+            tips = 0.0
         } else if tenPctButton.isSelected == true {
-            print("0.1")
+            tips = 0.1
         } else {
-            print("0.2")
+            tips = 0.2
         }
         
-        
+        billTextField.endEditing(true)
         
     }
     
@@ -51,9 +55,16 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func calculatePressed(_ sender: UIButton) {
+        billTextField.endEditing(true)
+        let peopleNumber = Float(splitNumberLabel.text ?? "2")!
+        print((Float(billTextField.text!) ?? 0 * (1 + tips))/5 )
         
-        let peopleNumber = splitNumberLabel.text ?? "2"
-        print(peopleNumber)
+        self.performSegue(withIdentifier: "calculate", sender: self)
+        
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print(splitNumberLabel.text ?? "2")
+        return true
     }
     
     
